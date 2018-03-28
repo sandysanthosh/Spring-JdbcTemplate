@@ -74,10 +74,40 @@ return ps.execute();
 }}
 
 
+preapred statement:
+
+ps.setId(1,e.getId());
+ps.setString(2,e.getName());
+ps.setFloat(3,e.getsalary());
+
+fetching record from JDBCTemplate:
+template.query
+template.
+->easily fetch records from database using query method
+
+public list<Employee> getAllEmployee(){
+return template.query("select * from employee");
+List<Employee> list=new ArrayList<Employee>();
+while(rs.next()){
+Employee e=new Employee();
+e.setId(rs.getInt(1));
+e.setName(rs.getString(2));
+e.setSalary(rs.getInt(3));
+list.add(e);
+}
+return list;
+}
+  
+  
+  
+
+
 main class:
 
 employee dao=(EmployeeDao)ctx.getBean("edao");
 dao.saveEmployeeByPreparedStatement(new Employee(108,"Amit",35000));
+
+
 
 
 
