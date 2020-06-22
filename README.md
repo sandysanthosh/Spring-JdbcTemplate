@@ -8,21 +8,26 @@ Welcome to the Spring-JdbcTemplate- wiki!
 * create application Context.xml with database connection:
 * create main java class
 
-
+```
 create table employee(id number(10),name varchar(100),salary number(10));
+```
 
 
 ##### employee java:
 
+```
 public class Employee{
 private int id;
 private String name;
 Private float salary;
 getter setter methos
 } 
+```
 
 #### private JdbcTemplate JdbcTemplate:
 
+
+```
 public int Save(Employee e){
 String Query="insert into employee vales(
 "+e.getId()+","+e.getName+",salary=+e.getsalary()+"'";
@@ -33,8 +38,10 @@ String query="delete from employee where id="+e.getId()+"";
 return jdbcTemplate.update(delete);
 }
 
-#### application contect.xml:
+```
 
+#### application contect.xml:
+```
 <bean id="ds" class="org.spring.framework.jdbc.datasource.DriverManagerDataSource">
 <property name="driverclass" value="oracle.jdbc.driver.oracleDriver">
 <property name="url" value="localjost:1522:xe:/>
@@ -52,18 +59,20 @@ return jdbcTemplate.update(delete);
 
 </beans>
 
-
+```
 #### test.java:
 
+```
 Applicationcontext ctx=new ClassPathXmlApplcationContext("applicationContext.xml");
 
 EmployeeDao dao=(EmployeeDao).getBean("dao");
 int status=dao.saveEmployee(new Employee(102,"amit",35000));
 system.out.printlnt(status);
 
-
+```
 #### preparedstatement:
 
+```
 boolean saveEmployeeByPrearedStatement(final Employeee e)
 {
 String query="insert into employee values(?,?,?)";
@@ -77,10 +86,11 @@ ps.setFloat(3,e.getSalary());
 
 return ps.execute();
 }}
+```
 
+#### prepared statement:
 
-#### preapred statement:
-
+```
 ps.setId(1,e.getId());
 ps.setString(2,e.getName());
 ps.setFloat(3,e.getsalary());
@@ -104,14 +114,15 @@ return list;
 }
   
   
-  
+  ```
 
 
 main class:
 
+```
 employee dao=(EmployeeDao)ctx.getBean("edao");
 dao.saveEmployeeByPreparedStatement(new Employee(108,"Amit",35000));
-
+```
 
 
 
@@ -135,6 +146,7 @@ setter
 
 #### spring.xml:
 
+```
 <context:annotation-config/>
 <bean id="datasource" class="org.apache.common.dcp.basicdatasource"/>
 <property name="driverClassName" value="org.class.apache.derby."/>
@@ -142,16 +154,17 @@ setter
 <property name="initialSize" value="2"/>
 <property name="maxAccess" value="5"/>\
 </bean>
-
+```
 
 #### JDBCDemo.java:
 
+```
 main()
 {
 ApplicationContext ctx=new ClassPathXmlApplicationContext("Spring.xml");
 JdbcDaoImpl dao=ctx.getBean("jdbcDaoImpl",jdbcdaoimpl.class);
 }
-
+```
 `
 
 `https://www.youtube.com/watch?v=0LYqy0wvS20`
